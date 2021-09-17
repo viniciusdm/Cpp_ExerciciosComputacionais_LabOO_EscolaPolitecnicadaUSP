@@ -12,6 +12,6 @@ using namespace std;
 
 int main() {
     cout << endl;
-    cout << "teste total" << endl;
+    cout << "teste total - LEGAL" << endl;
     cout << endl;
 }
