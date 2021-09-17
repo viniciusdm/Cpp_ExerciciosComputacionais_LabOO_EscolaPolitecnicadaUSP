@@ -6,11 +6,18 @@
 using namespace std;
 
 class Fila {
-public:
-
 private:
+    int size;
+    Datagrama** datagramas;
+    int quantidade;
 
-
+public:
+    Fila(int tamanho);
+    bool enqueue(Datagrama* d); 
+    Datagrama* dequeue(); 
+    bool isEmpty(); 
+    int getSize(); 
+    void imprimir();
 };
 
 #endif

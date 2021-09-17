@@ -6,11 +6,18 @@
 using namespace std;
 
 class Datagrama {
-public:
-
-
 private:
+    int origem;
+    int destino;
+    string dado;
 
+public:
+    Datagrama(int origem, int destino, string dado);
+    ~Datagrama(); 
+    int getOrigem(); 
+    int getDestino(); 
+    string getDado(); 
+    void imprimir();
 };
 
 #endif
