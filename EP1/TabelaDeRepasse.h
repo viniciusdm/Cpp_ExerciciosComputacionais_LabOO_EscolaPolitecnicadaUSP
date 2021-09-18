@@ -6,10 +6,9 @@
 using namespace std;
 
 class TabelaDeRepasse {
-public:
-
-
 private:
+
+public:
 
 };
 

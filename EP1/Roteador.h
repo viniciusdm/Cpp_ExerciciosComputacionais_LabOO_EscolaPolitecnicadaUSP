@@ -6,10 +6,9 @@
 using namespace std;
 
 class Roteador {
-public:
-
-
 private:
+
+public:
 
 };
 

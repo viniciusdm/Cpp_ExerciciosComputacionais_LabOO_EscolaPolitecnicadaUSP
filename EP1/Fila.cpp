@@ -7,13 +7,42 @@ using namespace std;
 Fila::Fila(int size){
     this -> size = size;
     datagramas = new Datagrama*[size];
+    copiaDatagrama = new Datagrama*[1];
     quantidade = 0;
 }
 
-Fila::~Fila(){    
+bool Fila::enqueue(Datagrama *d){
+    if (quantidade >= size){
+        return false;
+    }
+    datagramas[quantidade++] = d;
+    return true;
 }
 
-int Fila::getSize() const {
-    return size;
+Datagrama* Fila::dequeue(){
+    if (quantidade != 0){
+        copiaDatagrama[0] = datagramas[0];
+        datagramas[0] = datagramas[1]; 
+        datagramas[1] = datagramas[2]; 
+        datagramas[2] = datagramas[3];
+        datagramas[3] = NULL; 
+        quantidade -= 1;
+        return copiaDatagrama[0];
+    }
+    return NULL;
 }
 
+bool Fila::isEmpty(){
+    if (quantidade == 0){
+        return true;
+    }
+    return false;
+}
+
+int Fila::getSize(){
+    return quantidade;
+}
+
+void Fila::imprimir(){
+    cout << "Fila com " << quantidade << " Datagramas" << endl;
+}

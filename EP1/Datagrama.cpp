@@ -4,7 +4,7 @@
 #include <iostream>
 using namespace std;
 
-Datagrama::Dtagrama(int origem, int destino, string dado){
+Datagrama::Datagrama(int origem, int destino, string dado){
     this -> origem = origem;
     this -> destino = destino;
     this -> dado = dado;
@@ -12,18 +12,18 @@ Datagrama::Dtagrama(int origem, int destino, string dado){
 Datagrama::~Datagrama(){
 }
 
-int Datagrama::getDestino() const {
+int Datagrama::getDestino(){
     return destino;
 }
 
-int Datagrama::getOrigem() const {
+int Datagrama::getOrigem(){
     return origem;
 }
 
-string Datagrama::getDado() const {
+string Datagrama::getDado(){
     return dado;
 }
 
-void Artista::imprimir() {
+void Datagrama::imprimir(){
     cout << "Datagrama com a mensagem: " << getDado() << endl;
 }

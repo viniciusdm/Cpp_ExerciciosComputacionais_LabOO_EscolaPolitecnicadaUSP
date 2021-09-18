@@ -6,10 +6,9 @@
 using namespace std;
 
 class Evento {
-public:
-
-
 private:
+
+public:
     
 };
 
