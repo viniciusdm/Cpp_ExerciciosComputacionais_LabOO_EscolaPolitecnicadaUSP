@@ -4,9 +4,8 @@
 #include <iostream>
 using namespace std;
 
-Fila::Fila(int size){
-    this -> size = size;
-    datagramas = new Datagrama*[size];
+Fila::Fila(int tamanho){
+    datagramas = new Datagrama*[tamanho];
     copiaDatagrama = new Datagrama*[1];
     quantidade = 0;
 }

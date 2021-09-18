@@ -6,13 +6,12 @@
 #include <iostream>
 #include <string>
 using namespace std;
-
 class Fila {
 private:
     int size;
+    int quantidade;
     Datagrama** datagramas;
     Datagrama** copiaDatagrama;
-    int quantidade;
     
 public:
     Fila(int tamanho);
