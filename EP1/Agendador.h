@@ -10,9 +10,9 @@
 using namespace std;
 
 class Agendador {
-public:
-
 private:
+
+public:
     Agendador(int instanteInicial, Rede* rede, int tamanho);
     ~Agendador();
     bool agendar(int instante, Roteador* r, Datagrama* d);
