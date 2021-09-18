@@ -10,6 +10,8 @@ using namespace std;
 class Roteador;
 class TabelaDeRepasse {
 private:
+    Roteador* padrao;
+    int tamanho;
 
 public:
     TabelaDeRepasse(int tamanho);
