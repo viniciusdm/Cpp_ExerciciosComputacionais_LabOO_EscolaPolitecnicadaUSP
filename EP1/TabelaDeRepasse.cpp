@@ -6,8 +6,9 @@ using namespace std;
 
 TabelaDeRepasse::TabelaDeRepasse(int tamanho){
     this -> tamanho = tamanho;
-    int enderecos[tamanho];
-    int atrasos[tamanho];
+    enderecos = new int[tamanho];
+    atrasos = new int[tamanho];
+    roteadores = new Roteador*[tamanho];
     setPadrao(Roteador* padrao, int 0);
     int quantidade = 0;
 }
@@ -36,7 +37,9 @@ int TabelaDeRepasse::getQuantidadeDeAdjacentes(){
     return (sizeof(roteadores)/sizeof(*roteadores));
 }
 
-void TabelaDeRepasse::setPadrao(Roteador* padrao, int atraso){
+void TabelaDeRepasse::setPadrao(Roteador* padrao, int atraso) {
+    this -> roteadorPadrao = padrao;
+    atrasoPadrao = atraso;
 }
 
 Roteador* TabelaDeRepasse::getProximoSalto(int endereco, int atraso){

@@ -10,8 +10,12 @@ using namespace std;
 class Roteador;
 class TabelaDeRepasse {
 private:
-    Roteador* padrao;
+    Roteador* roteadorPadrao;
+    Roteador** roteadores;
+    int* enderecos;
+    int* atrasos;
     int tamanho;
+    int atrasoPadrao;
 
 public:
     TabelaDeRepasse(int tamanho);
