@@ -12,6 +12,8 @@ using namespace std;
 
 int main() {
 
+    cout << "poi" << endl;
+
     Datagrama *d1 = new Datagrama(1, 2, "um");
     Datagrama *d2 = new Datagrama(1, 2, "dois");
     Datagrama *d3 = new Datagrama(1, 2, "três");
