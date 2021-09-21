@@ -18,9 +18,12 @@ TabelaDeRepasse::~TabelaDeRepasse(){
 
 bool TabelaDeRepasse::mapear(int endereco, Roteador* adjacente, int atraso){
     for (int j = 0; j < quantidade; j++){
-        if (enderecos[j] == endereco || quantidade = tamanho){
+        if (enderecos[j] == endereco){
             return false;
         }
+    }
+    if (quantidade >= tamanho){
+        return false;
     }
     enderecos[quantidade] = endereco;
     atrasos[quantidade] = atraso;
@@ -39,6 +42,7 @@ int TabelaDeRepasse::getQuantidadeDeAdjacentes(){
 
 void TabelaDeRepasse::setPadrao(Roteador* padrao, int atraso) {
     this -> roteadorPadrao = padrao;
+    roteadorPadrao = NULL;
     atrasoPadrao = atraso;
 }
 
@@ -46,4 +50,8 @@ Roteador* TabelaDeRepasse::getProximoSalto(int endereco, int atraso){
 }
 
 void TabelaDeRepasse::imprimir(){
+    cout << "A tabela de Repasse contém os seguintes roteadores:" << endl;
+    for (int i = 0; i < quantidade; i++){
+        cout << "Roteador: " << roteadores[i] << " - com Endereço: " << enderecos[i] << " e Atraso: " << atrasos[i] << endl;
+    }
 }

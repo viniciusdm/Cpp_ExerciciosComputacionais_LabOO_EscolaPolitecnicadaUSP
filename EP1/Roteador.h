@@ -9,8 +9,9 @@
 #include <string>
 using namespace std;
 
-class TabelaDeRepasse;
-class Evento;
+class TabelaDeRepasse; //Protótipo da Classe TabelaDeRepasse
+class Evento; //Protótipo da Classe Evento
+
 class Roteador {
 private:
     int endereco;

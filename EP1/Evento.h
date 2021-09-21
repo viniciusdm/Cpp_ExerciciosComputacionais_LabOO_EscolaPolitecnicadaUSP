@@ -8,7 +8,8 @@
 #include <string>
 using namespace std;
 
-class Roteador;
+class Roteador; //Protótipo da Classe Roteador
+
 class Evento {
 private:
 
