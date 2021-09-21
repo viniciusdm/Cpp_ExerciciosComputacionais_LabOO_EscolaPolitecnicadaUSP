@@ -14,6 +14,9 @@ TabelaDeRepasse::TabelaDeRepasse(int tamanho){
 }
 
 TabelaDeRepasse::~TabelaDeRepasse(){
+    delete[] enderecos;
+    delete[] enderecos;
+    delete[] roteadores;
 }
 
 bool TabelaDeRepasse::mapear(int endereco, Roteador* adjacente, int atraso){
