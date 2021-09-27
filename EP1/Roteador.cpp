@@ -18,9 +18,9 @@ Roteador::~Roteador(){
 }
 
 bool Roteador::mapear(int endereco, Roteador* adjacente, int atraso){
-    enderecosDaTabela = tabelaDoRoteador -> getEnderecos();
+    roteadoresDaTabela = tabelaDoRoteador -> getAdjacentes();
     for (int i = 0; i < quantidade; i++){
-        if (enderecosDaTabela[i] == endereco){
+        if ((roteadoresDaTabela[i] -> getEndereco()) == endereco){
             return false;
         }
     }
