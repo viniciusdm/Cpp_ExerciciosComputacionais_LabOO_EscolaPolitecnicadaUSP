@@ -24,6 +24,7 @@ private:
     int atrasoDoPadraoDaTabela;
     Datagrama* datagrama;
     Roteador* enderecoAPassar;
+    int* enderecosDaTabela;
 
 public:
     Roteador(int endereco);

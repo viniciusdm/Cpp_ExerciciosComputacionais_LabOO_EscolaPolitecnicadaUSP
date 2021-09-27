@@ -18,8 +18,9 @@ Roteador::~Roteador(){
 }
 
 bool Roteador::mapear(int endereco, Roteador* adjacente, int atraso){
+    enderecosDaTabela = tabelaDoRoteador -> getEnderecos();
     for (int i = 0; i < quantidade; i++){
-        if ((tabelaDoRoteador -> getEnderecos[i]) == endereco){
+        if (enderecosDaTabela[i] == endereco){
             return false;
         }
     }
@@ -40,7 +41,7 @@ int Roteador::getEndereco(){
     return endereco;
 }
 void Roteador::receber(Datagrama* d){
-    if ((filaDoRoteador -> getSize) >= TAMANHO){
+    if ((filaDoRoteador -> getSize()) >= TAMANHO){
         cout << "\tFila em " << endereco << " estourou" << endl;
     }
     filaDoRoteador -> enqueue(d);
@@ -50,7 +51,7 @@ Evento* Roteador::processar(int instante){
     if (filaDoRoteador == NULL){
         return NULL;
     }
-    datagrama = filaDoRoteador -> enqueue();
+    datagrama = filaDoRoteador -> dequeue();
     if ((datagrama -> getDestino()) == endereco){
         delete datagrama;
         return NULL;

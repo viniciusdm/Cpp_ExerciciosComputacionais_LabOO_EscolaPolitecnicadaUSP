@@ -67,6 +67,6 @@ void TabelaDeRepasse::imprimir(){
     }
 }
 
-int* TaabelaDeRepasse::getEnderecos(){
+int* TabelaDeRepasse::getEnderecos(){
     return enderecos;
 }
