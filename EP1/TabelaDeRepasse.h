@@ -18,6 +18,7 @@ private:
     int tamanho;
     int atrasoPadrao;
     int quantidade;
+    int* getEnderecos();
 
 public:
     TabelaDeRepasse(int tamanho);

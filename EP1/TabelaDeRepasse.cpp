@@ -32,7 +32,7 @@ bool TabelaDeRepasse::mapear(int endereco, Roteador* adjacente, int atraso){
     enderecos[quantidade] = endereco;
     atrasos[quantidade] = atraso;
     roteadores[quantidade] = adjacente;
-    quantidade += 1;
+    quantidade = quantidade + 1;
     return true;
 }
 
@@ -65,4 +65,8 @@ void TabelaDeRepasse::imprimir(){
     for (int i = 0; i < quantidade; i++){
         cout << "Roteador: " << roteadores[i] << " - com Endereço: " << enderecos[i] << " e Atraso: " << atrasos[i] << endl;
     }
+}
+
+int* TaabelaDeRepasse::getEnderecos(){
+    return enderecos;
 }

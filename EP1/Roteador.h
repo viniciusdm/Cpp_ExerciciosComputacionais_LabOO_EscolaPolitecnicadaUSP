@@ -4,6 +4,8 @@
 
 #include "Datagrama.h"
 #include "Evento.h"
+#include "TabelaDeRepasse.h"
+#include "Fila.h"
 
 #include <iostream>
 #include <string>
@@ -14,6 +16,14 @@ class Evento; //Protótipo da Classe Evento
 
 class Roteador {
 private:
+    int endereco;
+    TabelaDeRepasse* tabelaDoRoteador;
+    Fila* filaDoRoteador; 
+    int quantidade;
+    Roteador* padraoDaTabela;
+    int atrasoDoPadraoDaTabela;
+    Datagrama* datagrama;
+    Roteador* enderecoAPassar;
 
 public:
     Roteador(int endereco);
