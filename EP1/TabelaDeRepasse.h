@@ -17,6 +17,7 @@ private:
     int* atrasos;
     int tamanho;
     int atrasoPadrao;
+    int quantidade;
 
 public:
     TabelaDeRepasse(int tamanho);
@@ -25,7 +26,7 @@ public:
     Roteador** getAdjacentes();
     int getQuantidadeDeAdjacentes();
     void setPadrao(Roteador* padrao, int atraso);
-    Roteador* getProximoSalto(int endereco, int atraso);
+    Roteador* getProximoSalto(int endereco, int& atraso);
     void imprimir();
 };
 

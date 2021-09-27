@@ -14,7 +14,6 @@ class Evento; //Protótipo da Classe Evento
 
 class Roteador {
 private:
-    int endereco;
 
 public:
     Roteador(int endereco);

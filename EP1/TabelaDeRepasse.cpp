@@ -9,8 +9,9 @@ TabelaDeRepasse::TabelaDeRepasse(int tamanho){
     enderecos = new int[tamanho];
     atrasos = new int[tamanho];
     roteadores = new Roteador*[tamanho];
-    setPadrao(Roteador* padrao, int 0);
-    int quantidade = 0;
+    roteadorPadrao = NULL;
+    atrasoPadrao = 0;
+    quantidade = 0;
 }
 
 TabelaDeRepasse::~TabelaDeRepasse(){
@@ -40,16 +41,23 @@ Roteador** TabelaDeRepasse::getAdjacentes(){
 }
 
 int TabelaDeRepasse::getQuantidadeDeAdjacentes(){
-    return (sizeof(roteadores)/sizeof(*roteadores));
+    return quantidade;
 }
 
 void TabelaDeRepasse::setPadrao(Roteador* padrao, int atraso) {
     this -> roteadorPadrao = padrao;
-    roteadorPadrao = NULL;
     atrasoPadrao = atraso;
 }
 
-Roteador* TabelaDeRepasse::getProximoSalto(int endereco, int atraso){
+Roteador* TabelaDeRepasse::getProximoSalto(int endereco, int& atraso){
+    for (int i = 0; i < quantidade; i++){
+        if (endereco == enderecos[i]){
+            atraso = atrasos[i];
+            return roteadores[i];
+        }
+    } 
+    atraso = atrasoPadrao;
+    return roteadorPadrao;
 }
 
 void TabelaDeRepasse::imprimir(){
