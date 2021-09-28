@@ -8,7 +8,6 @@ Roteador::Roteador(int endereco){
     enderecoDoRoteador = endereco;
     tabelaDoRoteador = new TabelaDeRepasse(10);
     filaDoRoteador = new Fila(10);
-    quantidadeDoRoteador = 0;
 }
 
 Roteador::~Roteador(){
