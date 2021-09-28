@@ -24,9 +24,10 @@ private:
     int atrasoDoPadraoDaTabela;
     Datagrama* datagrama;
     Roteador* roteadorAPassar;
-    Roteador** roteadoresDaTabela;
     Evento* eventoDoRoteador;
     int instanteComAtraso;
+    bool foiMapeado;
+    int atraso;
 
 public:
     Roteador(int endereco);

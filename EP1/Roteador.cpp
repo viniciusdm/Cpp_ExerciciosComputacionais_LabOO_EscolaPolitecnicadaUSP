@@ -9,7 +9,6 @@ Roteador::Roteador(int endereco){
     tabelaDoRoteador = new TabelaDeRepasse(10);
     filaDoRoteador = new Fila(10);
     quantidadeDoRoteador = 0;
-
 }
 
 Roteador::~Roteador(){
@@ -18,18 +17,8 @@ Roteador::~Roteador(){
 }
 
 bool Roteador::mapear(int endereco, Roteador* adjacente, int atraso){
-    roteadoresDaTabela = tabelaDoRoteador -> getAdjacentes();
-    for (int i = 0; i < quantidadeDoRoteador; i++){
-        if ((roteadoresDaTabela[i] -> getEndereco()) == endereco){
-            return false;
-        }
-    }
-    if (quantidadeDoRoteador >= TAMANHO){
-        return false;
-    }
-    tabelaDoRoteador -> mapear(endereco, adjacente, atraso);
-    quantidadeDoRoteador = quantidadeDoRoteador + 1;
-    return true;
+    foiMapeado = tabelaDoRoteador -> mapear(endereco, adjacente, atraso);
+    return foiMapeado;
 }
 
 void Roteador::setPadrao(Roteador* padrao, int atraso){
@@ -40,6 +29,7 @@ void Roteador::setPadrao(Roteador* padrao, int atraso){
 int Roteador::getEndereco(){
     return enderecoDoRoteador;
 }
+
 void Roteador::receber(Datagrama* d){
     if ((filaDoRoteador -> getSize()) >= TAMANHO){
         cout << "\tFila em " << enderecoDoRoteador << " estourou" << endl;
@@ -63,7 +53,7 @@ Evento* Roteador::processar(int instante){
         return NULL;
     }
 
-    roteadorAPassar = tabelaDoRoteador -> getProximoSalto();
+    roteadorAPassar = tabelaDoRoteador -> getProximoSalto(enderecoDoRoteador, atraso);
     if (roteadorAPassar == NULL){
 
         cout << "\tSem proximo: " << "Origem: " << datagrama -> getOrigem() << ", Destino: " << datagrama -> getDestino() << ", " << datagrama -> getDado() << endl; 

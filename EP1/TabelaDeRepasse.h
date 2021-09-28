@@ -18,6 +18,7 @@ private:
     int tamanhoDaTabela;
     int atrasoPadrao;
     int quantidadeDaTabela;
+    
 
 public:
     TabelaDeRepasse(int tamanho);

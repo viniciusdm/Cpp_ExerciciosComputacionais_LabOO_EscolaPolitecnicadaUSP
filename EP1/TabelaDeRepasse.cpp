@@ -61,5 +61,5 @@ Roteador* TabelaDeRepasse::getProximoSalto(int endereco, int& atraso){
 }
 
 void TabelaDeRepasse::imprimir(){
-    cout << "Tabela de Repasse referente ao Roteador de endereço: " << << endl;
+    cout << "Tabela de Repasse com " << tamanhoDaTabela << " posições" << endl;
 }
