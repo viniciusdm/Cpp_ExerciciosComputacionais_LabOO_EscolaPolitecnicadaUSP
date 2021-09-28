@@ -51,19 +51,35 @@ Evento* Roteador::processar(int instante){
     if (filaDoRoteador == NULL){
         return NULL;
     }
+
+    cout << "Roteador " << endereco << endl;
+
     datagrama = filaDoRoteador -> dequeue();
     if ((datagrama -> getDestino()) == endereco){
-        delete datagrama;
-        return NULL;
-    }
-    enderecoAPassar = tabelaDoRoteador -> getProximoSalto();
-    if (enderecoAPassar == NULL){
-        delete datagrama;
-        return NULL;
-    }
-    
+        
+        cout << "\tRecebido: " << datagrama -> getDado() << endl; 
 
+        delete datagrama;
+        return NULL;
+    }
+
+    roteadorAPassar = tabelaDoRoteador -> getProximoSalto();
+    if (roteadorAPassar == NULL){
+
+        cout << "\tSem proximo: " << "Origem: " << datagrama -> getOrigem() << ", Destino: " << datagrama -> getDestino() << ", " << datagrama -> getDado() << endl; 
+
+        delete datagrama;
+        return NULL;
+    }
+
+    instanteComAtraso = instante + atraso;
+    eventoDoRoteador = new Evento(instanteComAtraso, roteadorAPassar, datagrama);
+    
+    cout << "\tRepassado para " << roteadorAPassar -> getEndereco() << " (instante " << instanteComAtraso << " ): " << "Origem: " << datagrama -> getOrigem() << ", Destino: " << datagrama -> getDestino() << ", " << datagrama -> getDado() << endl; 
+
+    return eventoDoRoteador;
 }
 
 void Roteador::imprimir(){
+    cout << "Roteador com endereço: " << endereco << " com evento no instante: " << instanteComAtraso << endl;
 }

@@ -9,6 +9,9 @@ using namespace std;
 
 class Rede {
 private:
+    int tamanhoDaRede;
+    Roteador** roteadoresDaRede;
+    int quantidadeDeRoteadores; 
 
 public:
     Rede(int tamanho);

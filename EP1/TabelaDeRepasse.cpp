@@ -61,10 +61,7 @@ Roteador* TabelaDeRepasse::getProximoSalto(int endereco, int& atraso){
 }
 
 void TabelaDeRepasse::imprimir(){
-    cout << "A tabela de Repasse contém os seguintes roteadores:" << endl;
-    for (int i = 0; i < quantidade; i++){
-        cout << "Roteador: " << roteadores[i] << " - com Endereço: " << enderecos[i] << " e Atraso: " << atrasos[i] << endl;
-    }
+    cout << "Tabela de Repasse referente ao Roteador de endereço: " << << endl;
 }
 
 int* TabelaDeRepasse::getEnderecos(){
