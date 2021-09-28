@@ -19,7 +19,6 @@ private:
     int enderecoDoRoteador;
     TabelaDeRepasse* tabelaDoRoteador;
     Fila* filaDoRoteador; 
-    int quantidadeDoRoteador;
     Roteador* padraoDaTabela;
     int atrasoDoPadraoDaTabela;
     Datagrama* datagrama;
