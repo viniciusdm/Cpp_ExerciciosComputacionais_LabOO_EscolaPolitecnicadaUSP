@@ -5,32 +5,31 @@
 using namespace std;
 
 Evento::Evento(int instante, Roteador* destino, Datagrama* d){
-    this -> instante = instante;
-    this -> destino = destino;
-    this -> d = d;
-
+    instanteDoEvento = instante;
+    destinoDoEvento = destino;
+    datagramaDoEvento = d;
 }
 
 Evento::~Evento(){
-    delete destino;
+    delete destinoDoEvento;
 }
 
 int Evento::getInstante(){
-    return instante;
+    return instanteDoEvento;
 }
 
 Roteador* Evento::getDestino(){
-    return destino;
+    return destinoDoEvento;
 }
 
 Datagrama* Evento::getDatagrama(){
-    return d;
+    return datagramaDoEvento;
 }
 
 void Evento::imprimir(){
     cout << "Informaçöes do Evento: " << endl;
     cout << endl;
-    cout << "Instante do evento: " << instante << endl;
-    cout << "Roteador destino: " << destino << endl;
-    cout << "Datagrama: " << d << endl;
+    cout << "Instante do evento: " << instanteDoEvento << endl;
+    cout << "Roteador destino: " << destinoDoEvento << endl;
+    cout << "Datagrama: " << datagramaDoEvento << endl;
 }

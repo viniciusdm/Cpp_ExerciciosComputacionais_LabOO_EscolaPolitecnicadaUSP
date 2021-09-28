@@ -16,10 +16,10 @@ class Evento; //Protótipo da Classe Evento
 
 class Roteador {
 private:
-    int endereco;
+    int enderecoDoRoteador;
     TabelaDeRepasse* tabelaDoRoteador;
     Fila* filaDoRoteador; 
-    int quantidade;
+    int quantidadeDoRoteador;
     Roteador* padraoDaTabela;
     int atrasoDoPadraoDaTabela;
     Datagrama* datagrama;

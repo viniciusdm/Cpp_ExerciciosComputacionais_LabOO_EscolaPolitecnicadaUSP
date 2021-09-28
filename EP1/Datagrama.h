@@ -7,9 +7,9 @@ using namespace std;
 
 class Datagrama {
 private:
-    int origem;
-    int destino;
-    string dado;
+    int origemDoDatagrama;
+    int destinoDoDatagrama;
+    string dadoDoDatagrama;
 
 public:
     Datagrama(int origem, int destino, string dado);

@@ -5,10 +5,10 @@
 using namespace std;
 
 Roteador::Roteador(int endereco){
-    this -> endereco = endereco;
+    enderecoDoRoteador = endereco;
     tabelaDoRoteador = new TabelaDeRepasse(10);
     filaDoRoteador = new Fila(10);
-    quantidade = 0;
+    quantidadeDoRoteador = 0;
 
 }
 
@@ -19,30 +19,30 @@ Roteador::~Roteador(){
 
 bool Roteador::mapear(int endereco, Roteador* adjacente, int atraso){
     roteadoresDaTabela = tabelaDoRoteador -> getAdjacentes();
-    for (int i = 0; i < quantidade; i++){
+    for (int i = 0; i < quantidadeDoRoteador; i++){
         if ((roteadoresDaTabela[i] -> getEndereco()) == endereco){
             return false;
         }
     }
-    if (quantidade >= TAMANHO){
+    if (quantidadeDoRoteador >= TAMANHO){
         return false;
     }
     tabelaDoRoteador -> mapear(endereco, adjacente, atraso);
-    quantidade = quantidade + 1;
+    quantidadeDoRoteador = quantidadeDoRoteador + 1;
     return true;
 }
 
 void Roteador::setPadrao(Roteador* padrao, int atraso){
-    this -> padraoDaTabela = padrao;
-    this -> atrasoDoPadraoDaTabela = atraso;
+    padraoDaTabela = padrao;
+    atrasoDoPadraoDaTabela = atraso;
 }
 
 int Roteador::getEndereco(){
-    return endereco;
+    return enderecoDoRoteador;
 }
 void Roteador::receber(Datagrama* d){
     if ((filaDoRoteador -> getSize()) >= TAMANHO){
-        cout << "\tFila em " << endereco << " estourou" << endl;
+        cout << "\tFila em " << enderecoDoRoteador << " estourou" << endl;
     }
     filaDoRoteador -> enqueue(d);
 }
@@ -52,10 +52,10 @@ Evento* Roteador::processar(int instante){
         return NULL;
     }
 
-    cout << "Roteador " << endereco << endl;
+    cout << "Roteador " << enderecoDoRoteador << endl;
 
     datagrama = filaDoRoteador -> dequeue();
-    if ((datagrama -> getDestino()) == endereco){
+    if ((datagrama -> getDestino()) == enderecoDoRoteador){
         
         cout << "\tRecebido: " << datagrama -> getDado() << endl; 
 
@@ -81,5 +81,5 @@ Evento* Roteador::processar(int instante){
 }
 
 void Roteador::imprimir(){
-    cout << "Roteador com endereço: " << endereco << " com evento no instante: " << instanteComAtraso << endl;
+    cout << "Roteador com endereço: " << enderecoDoRoteador << " com evento no instante: " << instanteComAtraso << endl;
 }

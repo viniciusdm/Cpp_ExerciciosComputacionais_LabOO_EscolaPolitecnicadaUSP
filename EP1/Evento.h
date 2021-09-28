@@ -12,9 +12,9 @@ class Roteador; //Protótipo da Classe Roteador
 
 class Evento {
 private:
-    int instante;
-    Roteador* destino;
-    Datagrama* d;
+    int instanteDoEvento;
+    Roteador* destinoDoEvento;
+    Datagrama* datagramaDoEvento;
 
 public:
     Evento(int instante, Roteador* destino, Datagrama* d);

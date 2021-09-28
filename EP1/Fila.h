@@ -9,8 +9,8 @@
 using namespace std;
 class Fila {
 private:
-    int size;
-    int quantidade;
+    int tamanhoMaxDaFila;
+    int quantidadeDaFila;
     Datagrama** datagramas;
     Datagrama** copiaDatagrama;
     

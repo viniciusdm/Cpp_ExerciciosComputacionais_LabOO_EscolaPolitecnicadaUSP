@@ -5,7 +5,7 @@
 using namespace std;
 
 Rede::Rede(int tamanho){
-    this -> tamanhoDaRede = tamanho;
+    tamanhoDaRede = tamanho;
     roteadoresDaRede = new Roteador*[tamanho];
     quantidadeDeRoteadores = 0;
 }

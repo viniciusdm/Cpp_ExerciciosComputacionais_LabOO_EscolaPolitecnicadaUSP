@@ -5,23 +5,23 @@
 using namespace std;
 
 Datagrama::Datagrama(int origem, int destino, string dado){
-    this -> origem = origem;
-    this -> destino = destino;
-    this -> dado = dado;
+    origemDoDatagrama = origem;
+    destinoDoDatagrama = destino;
+    dadoDoDatagrama = dado;
 }
 Datagrama::~Datagrama(){
 }
 
 int Datagrama::getDestino(){
-    return destino;
+    return destinoDoDatagrama;
 }
 
 int Datagrama::getOrigem(){
-    return origem;
+    return origemDoDatagrama;
 }
 
 string Datagrama::getDado(){
-    return dado;
+    return dadoDoDatagrama;
 }
 
 void Datagrama::imprimir(){
