@@ -10,56 +10,133 @@
 #include <iostream>
 using namespace std;
 
-int main() {
+int main(){
 
-    cout << "poi" << endl;
+    int opcao;
+    int tempo;
+    int enderecoOrigem;
+    int instante;
+    int enderecoDestino;
+    string msg;
+    int simulacoes = 0;
+    int tamanho = 10;
 
-    Datagrama *d1 = new Datagrama(1, 2, "um");
-    Datagrama *d2 = new Datagrama(1, 2, "dois");
-    Datagrama *d3 = new Datagrama(1, 2, "três");
-    Datagrama *d4 = new Datagrama(1, 2, "quatro");
-    Datagrama *d5 = new Datagrama(1, 2, "cinco");
-    Datagrama *d6 = new Datagrama(1, 2, "seis");
-    Datagrama *d7 = new Datagrama(1, 2, "sete");
-    Datagrama *d8 = new Datagrama(1, 2, "oito");
-    Datagrama *d9 = new Datagrama(1, 2, "nove");
-    Datagrama *d10 = new Datagrama(1, 2, "dez");
-    Datagrama *d11 = new Datagrama(1, 2, "onze");
-     Datagrama *d12 = new Datagrama(1, 2, "doze");
+    Rede *redeSimulada = new Rede(6);
 
-    Fila *f1 = new Fila(4);
+    Roteador *r1 = new Roteador(1);
+    Roteador *r2 = new Roteador(2);
+    Roteador *r3 = new Roteador(3);
+    Roteador *r4 = new Roteador(4);
+    Roteador *r5 = new Roteador(5);
+    Roteador *r6 = new Roteador(6);
 
-    f1 -> enqueue(d1);
-    f1 -> enqueue(d2);
-    f1 -> imprimir();
-    f1 -> enqueue(d3);
-    f1 -> imprimir();
-    f1 -> dequeue();
-    f1 -> dequeue();
-    f1 -> dequeue();
-    f1 -> imprimir();
-    f1 -> dequeue();
-    f1 -> imprimir();
-    f1 -> dequeue();
-    f1 -> enqueue(d4);
-    f1 -> enqueue(d5);
-    f1 -> enqueue(d6);
-    f1 -> enqueue(d7);
-    f1 -> imprimir();
-    f1 -> dequeue();
-    f1 -> dequeue();
-    f1 -> enqueue(d8);
-    f1 -> enqueue(d9);
-    f1 -> enqueue(d10);
-    f1 -> imprimir();
-    f1 -> dequeue();
-    f1 -> dequeue();
-    f1 -> enqueue(d11);
-    f1 -> enqueue(d12);
-    f1 -> imprimir();
+    redeSimulada -> adicionar(r1);
+    redeSimulada -> adicionar(r2);
+    redeSimulada -> adicionar(r3);
+    redeSimulada -> adicionar(r4);
+    redeSimulada -> adicionar(r5);
+    redeSimulada -> adicionar(r6);
 
-    
-    cout << endl;
-    cout << "teste total - LEGAL" << endl;
-    cout << endl;
+    r1 -> mapear(2, r2, 2);
+    r1 -> setPadrao(r3, 1);
+
+    r2 -> mapear(1, r1, 2);
+    r2 -> setPadrao(r4, 1);
+
+    r3 -> mapear(1, r1, 1);
+    r3 -> mapear(5, r5, 2);
+    r3 -> setPadrao(r4, 1);
+
+    r4 -> mapear(2, r2, 1);
+    r4 -> mapear(6, r6, 1);
+    r4 -> setPadrao(r3, 1);
+
+    r5 -> mapear(6, r6, 2);
+    r5 -> setPadrao(r3, 2);
+
+    r6 -> mapear(5, r5, 2);
+    r6 -> setPadrao(r4, 1);
+
+    Agendador *agendador = new Agendador(1, redeSimulada, tamanho);
+
+    goto menu0;
+    menu0:
+    cout << "Simulador de Rede" << endl;
+    cout << "1) Enviar um datagrama" << endl;
+    cout << "2) Passar tempo" << endl;
+    cout << "0) Sair" << endl;
+    cout << "Escolha uma opção: ";
+    cin >> opcao;
+    cout << endl << endl;
+
+    if (opcao == 0){
+        return 0;
+    }
+
+    if (opcao == 1){
+        goto menu1;
+        menu1:
+        if (simulacoes < tamanho){
+            if (enderecoOrigem == 1 || enderecoOrigem == 2 || enderecoOrigem == 3 || enderecoOrigem == 4 || enderecoOrigem == 5 || enderecoOrigem == 6){
+                cout << "Endereço do roteador de origem: ";
+                cin >> enderecoOrigem;
+                cout << "Instante: ";
+                cin >> instante;
+                cout << "Endereço de destino: ";
+                cin >> enderecoDestino;
+                cout << "Mensagem: ";
+                cin >> msg;
+                cout << endl << endl;
+
+                Datagrama *datagrama = new Datagrama(enderecoOrigem, enderecoDestino, msg);
+
+                if (enderecoDestino == 1){
+                agendador -> agendar(instante, r1, datagrama); 
+                }
+
+                if (enderecoDestino == 2){
+                agendador -> agendar(instante, r2, datagrama); 
+                }
+
+                if (enderecoDestino == 3){
+                agendador -> agendar(instante, r3, datagrama); 
+                }
+
+                if (enderecoDestino == 4){
+                agendador -> agendar(instante, r4, datagrama); 
+                }
+
+                if (enderecoDestino == 5){
+                agendador -> agendar(instante, r5, datagrama); 
+                }
+
+                if (enderecoDestino == 6){
+                agendador -> agendar(instante, r6, datagrama); 
+                }
+
+                simulacoes += 1;
+                goto menu1;
+            }
+            else {
+                cout << "Erro: Origem desconhecida";
+                goto menu0;
+            }
+        }
+        else {
+            cout << "Erro: Sem espaco para agendar o evento";
+            goto menu0;
+        }
+    }
+
+    if (opcao == 2){
+        cout << "Quantidade de tempo: ";
+        cin >> tempo;
+        cout << endl << endl;
+        for (int k = 1; k <= tempo; k++){
+            cout << "Instante " << k << endl;
+            cout << "---" << endl;
+            agendador -> processar();
+        }
+        goto menu0;
+    }
 }
