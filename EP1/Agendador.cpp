@@ -31,23 +31,31 @@ bool Agendador::agendar(int instante, Roteador* r, Datagrama* d){
 void Agendador::processar(){
     roteadores = redeSimulada -> getRoteadores();
     quantidadeRoteadoresRede = redeSimulada -> getQuantidade();
-    for (int i = 0; i < quantidadeDeEventos; i++){
+    
+    int i = 0;
+
+    while (i < quantidadeDeEventos){
         if ((eventosAgendados[i] -> getInstante()) == instanteInicialSimulacao){
             destinoAPassar = eventosAgendados[i] -> getDestino();
             datagramaAPassar = eventosAgendados[i] -> getDatagrama();
             destinoAPassar -> receber(datagramaAPassar);
-            delete eventosAgendados[i];
-            quantidadeDeEventos -= 1;
-            for (int j = 0; j < quantidadeRoteadoresRede; j++){
-                novoEvento = roteadores[j] -> processar(i);
-                if (novoEvento != NULL){
-                        eventosAgendados[i++] = novoEvento;
-                        quantidadeDeEventos += 1;
-                }
+
+            for (int k = i; k < quantidadeDeEventos-1; k++){
+                eventosAgendados[k] = eventosAgendados[k+1];
             }
+            delete eventosAgendados[quantidadeDeEventos-1];
+            quantidadeDeEventos -= 1;
+        i = i + 1;
         }
-    instanteInicialSimulacao += 1;   
     }
+
+    for (int j = 0; j < quantidadeRoteadoresRede; j++){
+        novoEvento = roteadores[j] -> processar(instanteInicialSimulacao);
+            if (novoEvento != NULL){
+                eventosAgendados[quantidadeDeEventos++] = novoEvento;
+            }
+    }
+    instanteInicialSimulacao += 1;   
 }
 
 int Agendador::getInstante(){
