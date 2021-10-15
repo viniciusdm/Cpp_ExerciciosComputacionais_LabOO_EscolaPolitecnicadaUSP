@@ -14,11 +14,14 @@ Agendador::Agendador(int instanteInicial, Rede* rede, int tamanho){
 }
 
 Agendador::~Agendador(){
-
+    for (int i = 0; i < quantidadeDeEventos; i++){
+        delete eventosAgendados[i];
+    }
+    delete[] eventosAgendados;
 }
 
 bool Agendador::agendar(int instante, Roteador* r, Datagrama* d){
-    if (quantidadeDeEventos >= quantidadeMaxEventos){
+    if (quantidadeDeEventos >= quantidadeMaxEventosAgendador){
         return false;
     }
     eventosAgendados[quantidadeDeEventos++] = new Evento(instante, r, d);
@@ -26,23 +29,27 @@ bool Agendador::agendar(int instante, Roteador* r, Datagrama* d){
 }
 
 void Agendador::processar(){
-    roteadores = redeASimular -> getRoteadores();
-    quantidadeRoteadoresRede = -> redeASimular -> getQuantidade();
-    for (int i = 0, i < quantidadeDeEventos, i++){
+    roteadores = redeSimulada -> getRoteadores();
+    quantidadeRoteadoresRede = redeSimulada -> getQuantidade();
+    for (int i = 0; i < quantidadeDeEventos; i++){
         if ((eventosAgendados[i] -> getInstante()) == instanteInicialSimulacao){
-            destinoAPassaer = eventosAgendados[i] -> getDestino();
-            datagramaAPassar = eveventosAgendados[i] -> getDatagrama();
+            destinoAPassar = eventosAgendados[i] -> getDestino();
+            datagramaAPassar = eventosAgendados[i] -> getDatagrama();
             destinoAPassar -> receber(datagramaAPassar);
             delete eventosAgendados[i];
-            for (int j = 0, j < quantidadeRoteadoresRede, j++){
+            quantidadeDeEventos -= 1;
+            for (int j = 0; j < quantidadeRoteadoresRede; j++){
                 novoEvento = roteadores[j] -> processar(i);
                 if (novoEvento != NULL){
                         eventosAgendados[i++] = novoEvento;
+                        quantidadeDeEventos += 1;
                 }
             }
         }
+    instanteInicialSimulacao += 1;   
     }
 }
 
 int Agendador::getInstante(){
+    return instanteInicialSimulacao;
 }

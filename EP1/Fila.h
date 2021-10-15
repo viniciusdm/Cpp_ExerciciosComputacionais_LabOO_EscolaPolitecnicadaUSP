@@ -16,6 +16,7 @@ private:
     
 public:
     Fila(int tamanho);
+    ~Fila();
     bool enqueue(Datagrama* d); 
     Datagrama* dequeue(); 
     bool isEmpty(); 

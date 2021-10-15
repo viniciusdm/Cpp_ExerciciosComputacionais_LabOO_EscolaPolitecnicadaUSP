@@ -12,7 +12,7 @@ Fila::Fila(int tamanho){
 }
 
 Fila::~Fila(){
-    for (int i = 0, i < quantidadeDaFila, i++){
+    for (int i = 0; i < quantidadeDaFila; i++){
         delete filaDeDatagramas[i];
     }
     delete[] filaDeDatagramas;
