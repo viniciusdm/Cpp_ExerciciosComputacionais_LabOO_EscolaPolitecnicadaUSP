@@ -18,7 +18,6 @@ Fila::~Fila(){
     delete[] filaDeDatagramas;
 }
 
-
 bool Fila::enqueue(Datagrama *d){
     if (quantidadeDaFila >= tamanhoMaxDaFila){
         return false;
@@ -28,16 +27,17 @@ bool Fila::enqueue(Datagrama *d){
 }
 
 Datagrama* Fila::dequeue(){
-    if (quantidadeDaFila != 0){
+    if (quantidadeDaFila > 0){
         copiaDatagrama[0] = filaDeDatagramas[0];
-        filaDeDatagramas[0] = filaDeDatagramas[1]; 
-        filaDeDatagramas[1] = filaDeDatagramas[2]; 
-        filaDeDatagramas[2] = filaDeDatagramas[3];
-        filaDeDatagramas[3] = NULL; 
+        cout << filaDeDatagramas[0] -> getDado() << endl;
+        for (int i = 0; i < quantidadeDaFila-1; i++){
+            filaDeDatagramas[i] = filaDeDatagramas[i+1]; 
+        }
+        delete filaDeDatagramas[quantidadeDaFila-1];
         quantidadeDaFila -= 1;
         return copiaDatagrama[0];
     }
-    return NULL;
+    return NULL; 
 }
 
 bool Fila::isEmpty(){

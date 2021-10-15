@@ -42,16 +42,17 @@ Evento* Roteador::processar(int instante){
     }
 
     cout << "Roteador " << enderecoDoRoteador << endl;
-
     datagrama = filaDoRoteador -> dequeue();
+    
     if ((datagrama -> getDestino()) == enderecoDoRoteador){
         
         cout << "\tRecebido: " << datagrama -> getDado() << endl; 
 
         delete datagrama;
+
         return NULL;
     }
-
+    
     roteadorAPassar = tabelaDoRoteador -> getProximoSalto(enderecoDoRoteador, atraso);
     if (roteadorAPassar == NULL){
 
@@ -60,7 +61,7 @@ Evento* Roteador::processar(int instante){
         delete datagrama;
         return NULL;
     }
-
+    
     instanteComAtraso = instante + atraso;
     eventoDoRoteador = new Evento(instanteComAtraso, roteadorAPassar, datagrama);
     

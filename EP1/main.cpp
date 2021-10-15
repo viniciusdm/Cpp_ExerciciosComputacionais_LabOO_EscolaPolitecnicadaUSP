@@ -67,7 +67,7 @@ int main(){
     cout << "0) Sair" << endl;
     cout << "Escolha uma opção: ";
     cin >> opcao;
-    cout << endl << endl;
+    cout << endl;
 
     if (opcao == 0){
         return 0;
@@ -77,16 +77,18 @@ int main(){
         goto menu1;
         menu1:
         if (simulacoes < tamanho){
+        
+            cout << "Endereço do roteador de origem: ";
+            cin >> enderecoOrigem;
+            cout << "Instante: ";
+            cin >> instante;
+            cout << "Endereço de destino: ";
+            cin >> enderecoDestino;
+            cout << "Mensagem: ";
+            cin >> msg;
+            cout << endl;
+
             if (enderecoOrigem == 1 || enderecoOrigem == 2 || enderecoOrigem == 3 || enderecoOrigem == 4 || enderecoOrigem == 5 || enderecoOrigem == 6){
-                cout << "Endereço do roteador de origem: ";
-                cin >> enderecoOrigem;
-                cout << "Instante: ";
-                cin >> instante;
-                cout << "Endereço de destino: ";
-                cin >> enderecoDestino;
-                cout << "Mensagem: ";
-                cin >> msg;
-                cout << endl << endl;
 
                 Datagrama *datagrama = new Datagrama(enderecoOrigem, enderecoDestino, msg);
 
@@ -115,15 +117,15 @@ int main(){
                 }
 
                 simulacoes += 1;
-                goto menu1;
+                goto menu0;
             }
             else {
-                cout << "Erro: Origem desconhecida";
+                cout << "Erro: Origem desconhecida" << endl;
                 goto menu0;
             }
         }
         else {
-            cout << "Erro: Sem espaco para agendar o evento";
+            cout << "Erro: Sem espaco para agendar o evento" << endl;
             goto menu0;
         }
     }
@@ -131,7 +133,7 @@ int main(){
     if (opcao == 2){
         cout << "Quantidade de tempo: ";
         cin >> tempo;
-        cout << endl << endl;
+        cout << endl;
         for (int k = 1; k <= tempo; k++){
             cout << "Instante " << k << endl;
             cout << "---" << endl;
