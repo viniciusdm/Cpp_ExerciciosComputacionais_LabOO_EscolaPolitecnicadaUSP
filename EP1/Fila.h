@@ -11,7 +11,7 @@ class Fila {
 private:
     int tamanhoMaxDaFila;
     int quantidadeDaFila;
-    Datagrama** datagramas;
+    Datagrama** filaDeDatagramas;
     Datagrama** copiaDatagrama;
     
 public:

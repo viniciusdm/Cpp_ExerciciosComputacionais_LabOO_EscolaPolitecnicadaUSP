@@ -6,26 +6,34 @@ using namespace std;
 
 Fila::Fila(int tamanho){
     tamanhoMaxDaFila = tamanho;
-    datagramas = new Datagrama*[tamanho];
+    filaDeDatagramas = new Datagrama*[tamanho];
     copiaDatagrama = new Datagrama*[1];
     quantidadeDaFila = 0;
 }
+
+Fila::~Fila(){
+    for (int i = 0, i < quantidadeDaFila, i++){
+        delete filaDeDatagramas[i];
+    }
+    delete[] filaDeDatagramas;
+}
+
 
 bool Fila::enqueue(Datagrama *d){
     if (quantidadeDaFila >= tamanhoMaxDaFila){
         return false;
     }
-    datagramas[quantidadeDaFila++] = d;
+    filaDeDatagramas[quantidadeDaFila++] = d;
     return true;
 }
 
 Datagrama* Fila::dequeue(){
     if (quantidadeDaFila != 0){
-        copiaDatagrama[0] = datagramas[0];
-        datagramas[0] = datagramas[1]; 
-        datagramas[1] = datagramas[2]; 
-        datagramas[2] = datagramas[3];
-        datagramas[3] = NULL; 
+        copiaDatagrama[0] = filaDeDatagramas[0];
+        filaDeDatagramas[0] = filaDeDatagramas[1]; 
+        filaDeDatagramas[1] = filaDeDatagramas[2]; 
+        filaDeDatagramas[2] = filaDeDatagramas[3];
+        filaDeDatagramas[3] = NULL; 
         quantidadeDaFila -= 1;
         return copiaDatagrama[0];
     }

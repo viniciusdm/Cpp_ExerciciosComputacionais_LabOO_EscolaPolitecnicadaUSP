@@ -6,8 +6,8 @@ using namespace std;
 
 Roteador::Roteador(int endereco){
     enderecoDoRoteador = endereco;
-    tabelaDoRoteador = new TabelaDeRepasse(10);
-    filaDoRoteador = new Fila(10);
+    tabelaDoRoteador = new TabelaDeRepasse(TAMANHO);
+    filaDoRoteador = new Fila(TAMANHO);
 }
 
 Roteador::~Roteador(){
@@ -64,7 +64,7 @@ Evento* Roteador::processar(int instante){
     instanteComAtraso = instante + atraso;
     eventoDoRoteador = new Evento(instanteComAtraso, roteadorAPassar, datagrama);
     
-    cout << "\tRepassado para " << roteadorAPassar -> getEndereco() << " (instante " << instanteComAtraso << " ): " << "Origem: " << datagrama -> getOrigem() << ", Destino: " << datagrama -> getDestino() << ", " << datagrama -> getDado() << endl; 
+    cout << "\tRepassado para " << roteadorAPassar -> getEndereco() << " (instante " << instanteComAtraso << "): " << "Origem: " << datagrama -> getOrigem() << ", Destino: " << datagrama -> getDestino() << ", " << datagrama -> getDado() << endl; 
 
     return eventoDoRoteador;
 }

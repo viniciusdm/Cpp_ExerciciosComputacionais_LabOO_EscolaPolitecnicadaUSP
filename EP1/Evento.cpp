@@ -11,7 +11,7 @@ Evento::Evento(int instante, Roteador* destino, Datagrama* d){
 }
 
 Evento::~Evento(){
-    delete destinoDoEvento;
+    delete instanteDoEvento;
 }
 
 int Evento::getInstante(){

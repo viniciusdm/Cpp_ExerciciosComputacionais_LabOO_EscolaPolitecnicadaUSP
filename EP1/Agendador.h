@@ -11,6 +11,16 @@ using namespace std;
 
 class Agendador {
 private:
+    int instanteInicialSimulacao;
+    Rede* redeSimulada;
+    int quantidadeMaxEventosAgendador;
+    Evento** eventosAgendados;
+    int quantidadeDeEventos;
+    Roteador** roteadores;
+    Roteador* destinoAPassar;
+    Datagrama* datagramaAPassar;
+    int quantidadeRoteadoresRede;
+    Evento* novoEvento;
 
 public:
     Agendador(int instanteInicial, Rede* rede, int tamanho);
