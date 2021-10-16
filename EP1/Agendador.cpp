@@ -35,8 +35,7 @@ void Agendador::processar(){
     int i = 0;
 
     while (i < quantidadeDeEventos){
-        goto menu:
-        menu:
+        reverifica:
         if ((eventosAgendados[i] -> getInstante()) == instanteInicialSimulacao){
             destinoAPassar = eventosAgendados[i] -> getDestino();
             datagramaAPassar = eventosAgendados[i] -> getDatagrama();
@@ -47,9 +46,9 @@ void Agendador::processar(){
             }
             delete eventosAgendados[quantidadeDeEventos-1];
             quantidadeDeEventos -= 1;
-            goto menu;
-        i = i + 1;
+            goto reverifica;
         }
+        i = i + 1;
     }
 
     for (int j = 0; j < quantidadeRoteadoresRede; j++){
