@@ -25,5 +25,5 @@ string Datagrama::getDado(){
 }
 
 void Datagrama::imprimir(){
-    cout << "Datagrama com a mensagem: " << getDado() << endl;
+    cout << "Origem: " << getOrigem() << ", Destino: " << getDestino() << ", " << getDado() << endl;
 }

@@ -29,6 +29,7 @@ void Evento::imprimir(){
     cout << "Informaçöes do Evento: " << endl;
     cout << endl;
     cout << "Instante do evento: " << instanteDoEvento << endl;
-    cout << "Roteador destino: " << destinoDoEvento << endl;
-    cout << "Datagrama: " << datagramaDoEvento << endl;
+    cout << "Roteador destino: " << destinoDoEvento -> getEndereco() << endl;
+    cout << "Datagrama: ";
+    datagramaDoEvento -> imprimir();
 }

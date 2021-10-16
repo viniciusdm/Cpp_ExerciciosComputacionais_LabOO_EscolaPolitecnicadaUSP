@@ -32,7 +32,7 @@ Datagrama* Fila::dequeue(){
         for (int i = 0; i < quantidadeDaFila-1; i++){
             filaDeDatagramas[i] = filaDeDatagramas[i+1]; 
         }
-        delete filaDeDatagramas[quantidadeDaFila-1];
+        filaDeDatagramas[quantidadeDaFila-1] = NULL;
         quantidadeDaFila -= 1;
         return copiaDatagrama[0];
     }

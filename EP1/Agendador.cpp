@@ -36,17 +36,24 @@ void Agendador::processar(){
 
     while (i < quantidadeDeEventos){
         reverifica:
-        if ((eventosAgendados[i] -> getInstante()) == instanteInicialSimulacao){
-            destinoAPassar = eventosAgendados[i] -> getDestino();
-            datagramaAPassar = eventosAgendados[i] -> getDatagrama();
-            destinoAPassar -> receber(datagramaAPassar);
+        if (eventosAgendados[i] != NULL){
+            if ((eventosAgendados[i] -> getInstante()) == instanteInicialSimulacao){
+                destinoAPassar = eventosAgendados[i] -> getDestino();
+                datagramaAPassar = eventosAgendados[i] -> getDatagrama();
+                destinoAPassar -> receber(datagramaAPassar);
+                
+                for(int k = i; k < quantidadeDeEventos-1; k++){
+                    eventosAgendados[k] = eventosAgendados[k+1];
+                }
 
-            for (int k = i; k < quantidadeDeEventos-1; k++){
-                eventosAgendados[k] = eventosAgendados[k+1];
+                eventosAgendados[quantidadeDeEventos-1] = NULL;
+                quantidadeDeEventos -= 1;
+
+                for (int h = 0; h < quantidadeDeEventos; h++){
+                    eventosAgendados[h] -> imprimir();
+                }
+                goto reverifica;
             }
-            delete eventosAgendados[quantidadeDeEventos-1];
-            quantidadeDeEventos -= 1;
-            goto reverifica;
         }
         i = i + 1;
     }
