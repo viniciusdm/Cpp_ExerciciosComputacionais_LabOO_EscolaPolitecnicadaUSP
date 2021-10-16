@@ -29,7 +29,6 @@ bool Fila::enqueue(Datagrama *d){
 Datagrama* Fila::dequeue(){
     if (quantidadeDaFila > 0){
         copiaDatagrama[0] = filaDeDatagramas[0];
-        cout << filaDeDatagramas[0] -> getDado() << endl;
         for (int i = 0; i < quantidadeDaFila-1; i++){
             filaDeDatagramas[i] = filaDeDatagramas[i+1]; 
         }

@@ -35,6 +35,8 @@ void Agendador::processar(){
     int i = 0;
 
     while (i < quantidadeDeEventos){
+        goto menu:
+        menu:
         if ((eventosAgendados[i] -> getInstante()) == instanteInicialSimulacao){
             destinoAPassar = eventosAgendados[i] -> getDestino();
             datagramaAPassar = eventosAgendados[i] -> getDatagrama();
@@ -45,6 +47,7 @@ void Agendador::processar(){
             }
             delete eventosAgendados[quantidadeDeEventos-1];
             quantidadeDeEventos -= 1;
+            goto menu;
         i = i + 1;
         }
     }

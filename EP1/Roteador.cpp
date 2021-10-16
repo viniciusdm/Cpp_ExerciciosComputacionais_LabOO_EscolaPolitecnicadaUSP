@@ -33,7 +33,9 @@ void Roteador::receber(Datagrama* d){
     if ((filaDoRoteador -> getSize()) >= TAMANHO){
         cout << "\tFila em " << enderecoDoRoteador << " estourou" << endl;
     }
+    else {
     filaDoRoteador -> enqueue(d);
+    }
 }
 
 Evento* Roteador::processar(int instante){
