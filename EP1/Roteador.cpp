@@ -21,8 +21,7 @@ bool Roteador::mapear(int endereco, Roteador* adjacente, int atraso){
 }
 
 void Roteador::setPadrao(Roteador* padrao, int atraso){
-    padraoDaTabela = padrao;
-    atrasoDoPadraoDaTabela = atraso;
+    tabelaDoRoteador -> setPadrao(padrao, atraso);
 }
 
 int Roteador::getEndereco(){
@@ -51,11 +50,10 @@ Evento* Roteador::processar(int instante){
         cout << "\tRecebido: " << datagrama -> getDado() << endl; 
 
         delete datagrama;
-
         return NULL;
     }
-    
-    roteadorAPassar = tabelaDoRoteador -> getProximoSalto(enderecoDoRoteador, atraso);
+
+    roteadorAPassar = tabelaDoRoteador -> getProximoSalto(datagrama -> getDestino(), atraso);
     if (roteadorAPassar == NULL){
 
         cout << "\tSem proximo: ";

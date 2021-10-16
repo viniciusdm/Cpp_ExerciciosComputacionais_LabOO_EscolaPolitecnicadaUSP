@@ -89,6 +89,31 @@ int main(){
 
                 Datagrama *datagrama = new Datagrama(enderecoOrigem, enderecoDestino, msg);
 
+                if (enderecoOrigem == 1){
+                    r1 -> receber(datagrama);
+                    
+                }
+
+                if (enderecoOrigem == 2){
+                    r2 -> receber(datagrama);
+                }
+
+                if (enderecoOrigem == 3){
+                    r3 -> receber(datagrama);
+                }
+
+                if (enderecoOrigem == 4){
+                    r4 -> receber(datagrama);
+                }
+
+                if (enderecoOrigem == 5){
+                    r5 -> receber(datagrama);
+                }  
+
+                if (enderecoOrigem == 6){
+                    r6 -> receber(datagrama);
+                }                
+
                 if (enderecoDestino == 1){
                 agendador -> agendar(instante, r1, datagrama); 
                 }
