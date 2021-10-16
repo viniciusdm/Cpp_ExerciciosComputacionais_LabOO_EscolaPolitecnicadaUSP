@@ -77,15 +77,15 @@ int main(){
         
             cout << "Endereço do roteador de origem: ";
             cin >> enderecoOrigem;
-            cout << "Instante: ";
-            cin >> instante;
-            cout << "Endereço de destino: ";
-            cin >> enderecoDestino;
-            cout << "Mensagem: ";
-            cin >> msg;
-            cout << endl;
 
             if (enderecoOrigem == 1 || enderecoOrigem == 2 || enderecoOrigem == 3 || enderecoOrigem == 4 || enderecoOrigem == 5 || enderecoOrigem == 6){
+
+                cout << "Instante: ";
+                cin >> instante;
+                cout << "Endereço de destino: ";
+                cin >> enderecoDestino;
+                cout << "Mensagem: ";
+                cin >> msg;
 
                 Datagrama *datagrama = new Datagrama(enderecoOrigem, enderecoDestino, msg);
 
@@ -138,15 +138,20 @@ int main(){
                 }
 
                 simulacoes += 1;
+                cout << endl;
                 goto menu0;
             }
             else {
+                cout << endl;
                 cout << "Erro: Origem desconhecida" << endl;
+                cout << endl;
                 goto menu0;
             }
         }
         else {
+            cout << endl;
             cout << "Erro: Sem espaco para agendar o evento" << endl;
+            cout << endl;
             goto menu0;
         }
     }
