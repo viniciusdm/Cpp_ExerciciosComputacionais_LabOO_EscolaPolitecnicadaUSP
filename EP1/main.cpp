@@ -59,7 +59,6 @@ int main(){
 
     Agendador *agendador = new Agendador(1, redeSimulada, tamanho);
 
-    goto menu0;
     menu0:
     cout << "Simulador de Rede" << endl;
     cout << "1) Enviar um datagrama" << endl;
@@ -74,8 +73,6 @@ int main(){
     }
 
     if (opcao == 1){
-        goto menu1;
-        menu1:
         if (simulacoes < tamanho){
         
             cout << "Endereço do roteador de origem: ";
