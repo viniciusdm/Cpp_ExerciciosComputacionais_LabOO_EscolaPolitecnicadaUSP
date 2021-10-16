@@ -18,7 +18,6 @@ int main(){
     int instante;
     int enderecoDestino;
     string msg;
-    int simulacoes = 0;
     int tamanho = 10;
 
     Rede *redeSimulada = new Rede(6);
@@ -60,6 +59,8 @@ int main(){
     Agendador *agendador = new Agendador(1, redeSimulada, tamanho);
 
     menu0:
+    int simulacoes = 0;
+    menu1:
     cout << "Simulador de Rede" << endl;
     cout << "1) Enviar um datagrama" << endl;
     cout << "2) Passar tempo" << endl;
@@ -89,6 +90,7 @@ int main(){
 
                 Datagrama *datagrama = new Datagrama(enderecoOrigem, enderecoDestino, msg);
 
+                /*
                 if (enderecoOrigem == 1){
                     r1 -> receber(datagrama);  
                 }
@@ -112,7 +114,8 @@ int main(){
                 if (enderecoOrigem == 6){
                     r6 -> receber(datagrama);
                 }                
-
+                */
+               
                 if (enderecoDestino == 1){
                 agendador -> agendar(instante, r1, datagrama); 
                 }
@@ -139,20 +142,20 @@ int main(){
 
                 simulacoes += 1;
                 cout << endl;
-                goto menu0;
+                goto menu1;
             }
             else {
                 cout << endl;
                 cout << "Erro: Origem desconhecida" << endl;
                 cout << endl;
-                goto menu0;
+                goto menu1;
             }
         }
         else {
             cout << endl;
             cout << "Erro: Sem espaco para agendar o evento" << endl;
             cout << endl;
-            goto menu0;
+            goto menu1;
         }
     }
 

@@ -17,10 +17,12 @@ private:
     Evento** eventosAgendados;
     int quantidadeDeEventos;
     Roteador** roteadores;
-    Roteador* destinoAPassar;
     Datagrama* datagramaAPassar;
     int quantidadeRoteadoresRede;
     Evento* novoEvento;
+    int enderecoRoteadorDeOrigem;
+    //Roteador* roteadorAPassar;
+    Roteador* roteadorDeOrigem;
 
 public:
     Agendador(int instanteInicial, Rede* rede, int tamanho);
