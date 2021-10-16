@@ -90,8 +90,7 @@ int main(){
                 Datagrama *datagrama = new Datagrama(enderecoOrigem, enderecoDestino, msg);
 
                 if (enderecoOrigem == 1){
-                    r1 -> receber(datagrama);
-                    
+                    r1 -> receber(datagrama);  
                 }
 
                 if (enderecoOrigem == 2){
