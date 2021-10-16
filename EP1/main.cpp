@@ -135,6 +135,7 @@ int main(){
             cout << "Instante " << k << endl;
             cout << "---" << endl;
             agendador -> processar();
+            cout << endl;
         }
         goto menu0;
     }

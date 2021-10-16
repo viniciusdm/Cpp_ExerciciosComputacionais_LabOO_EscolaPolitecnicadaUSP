@@ -48,10 +48,6 @@ void Agendador::processar(){
 
                 eventosAgendados[quantidadeDeEventos-1] = NULL;
                 quantidadeDeEventos -= 1;
-
-                for (int h = 0; h < quantidadeDeEventos; h++){
-                    eventosAgendados[h] -> imprimir();
-                }
                 goto reverifica;
             }
         }

@@ -39,7 +39,7 @@ void Roteador::receber(Datagrama* d){
 }
 
 Evento* Roteador::processar(int instante){
-    if (filaDoRoteador == NULL){
+    if (filaDoRoteador -> isEmpty() == true){
         return NULL;
     }
 
