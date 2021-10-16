@@ -38,10 +38,16 @@ void Agendador::processar(){
         reverifica:
         if (eventosAgendados[i] != NULL){
             if ((eventosAgendados[i] -> getInstante()) == instanteInicialSimulacao){
-                destinoAPassar = eventosAgendados[i] -> getDestino();
-                datagramaAPassar = eventosAgendados[i] -> getDatagrama();
-                destinoAPassar -> receber(datagramaAPassar);
                 
+                //enderecoRoteadorDeOrigem = eventosAgendados[i] -> getDestino();
+                //roteadorDeOrigem = roteadores[enderecoRoteadorDeOrigem-1];
+                roteadorDeOrigem = eventosAgendados[i] -> getDestino();
+                roteadorDeOrigem -> imprimir();
+                datagramaAPassar = eventosAgendados[i] -> getDatagrama();
+                roteadorDeOrigem -> receber(datagramaAPassar);
+                //roteadorAPassar = eventosAgendados[i] -> getDestino();
+                //roteadorAPassar -> receber(datagramaAPassar);
+
                 for(int k = i; k < quantidadeDeEventos-1; k++){
                     eventosAgendados[k] = eventosAgendados[k+1];
                 }
