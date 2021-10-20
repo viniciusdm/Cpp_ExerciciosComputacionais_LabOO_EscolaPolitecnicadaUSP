@@ -9,8 +9,6 @@ Agendador::Agendador(int instanteInicial, Rede* rede, int tamanho){
     redeSimulada = rede;
     quantidadeMaxEventosAgendador = tamanho;
     eventosAgendados = new Evento*[tamanho];
-    quantidadeDeEventos = 0;
-
 }
 
 Agendador::~Agendador(){

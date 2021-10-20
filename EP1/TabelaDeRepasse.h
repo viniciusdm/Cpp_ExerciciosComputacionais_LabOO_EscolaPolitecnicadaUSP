@@ -16,10 +16,9 @@ private:
     int* enderecosDaTabela;
     int* atrasosDaTabela;
     int tamanhoDaTabela;
-    int atrasoPadrao;
-    int quantidadeDaTabela;
+    int atrasoPadrao = 0;
+    int quantidadeDaTabela = 0;
     
-
 public:
     TabelaDeRepasse(int tamanho);
     ~TabelaDeRepasse();

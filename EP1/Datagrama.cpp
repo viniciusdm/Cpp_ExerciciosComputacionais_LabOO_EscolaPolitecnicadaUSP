@@ -9,6 +9,7 @@ Datagrama::Datagrama(int origem, int destino, string dado){
     destinoDoDatagrama = destino;
     dadoDoDatagrama = dado;
 }
+
 Datagrama::~Datagrama(){
 }
 

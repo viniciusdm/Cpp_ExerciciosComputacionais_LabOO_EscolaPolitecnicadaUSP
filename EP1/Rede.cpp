@@ -7,7 +7,6 @@ using namespace std;
 Rede::Rede(int tamanho){
     tamanhoDaRede = tamanho;
     roteadoresDaRede = new Roteador*[tamanho];
-    quantidadeDeRoteadores = 0;
 }
 
 Rede::~Rede(){

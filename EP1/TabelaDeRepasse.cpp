@@ -10,8 +10,6 @@ TabelaDeRepasse::TabelaDeRepasse(int tamanho){
     atrasosDaTabela = new int[tamanho];
     roteadoresDaTabela = new Roteador*[tamanho];
     roteadorPadrao = NULL;
-    atrasoPadrao = 0;
-    quantidadeDaTabela = 0;
 }
 
 TabelaDeRepasse::~TabelaDeRepasse(){

@@ -15,7 +15,7 @@ private:
     Rede* redeSimulada;
     int quantidadeMaxEventosAgendador;
     Evento** eventosAgendados;
-    int quantidadeDeEventos;
+    int quantidadeDeEventos = 0;
     Roteador** roteadores;
     Datagrama* datagramaAPassar;
     int quantidadeRoteadoresRede;

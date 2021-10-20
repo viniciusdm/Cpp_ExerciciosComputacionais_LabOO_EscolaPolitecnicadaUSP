@@ -8,7 +8,6 @@ Fila::Fila(int tamanho){
     tamanhoMaxDaFila = tamanho;
     filaDeDatagramas = new Datagrama*[tamanho];
     copiaDatagrama = new Datagrama*[1];
-    quantidadeDaFila = 0;
 }
 
 Fila::~Fila(){

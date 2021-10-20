@@ -11,7 +11,7 @@ class Rede {
 private:
     int tamanhoDaRede;
     Roteador** roteadoresDaRede;
-    int quantidadeDeRoteadores; 
+    int quantidadeDeRoteadores = 0; 
 
 public:
     Rede(int tamanho);
