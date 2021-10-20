@@ -19,6 +19,9 @@ int main(){
     int enderecoDestino;
     string msg;
     int tamanho = 10;
+    int simulacoes = 0;
+    int instanteInicial = 1;
+    int instanteMostrado = 0;
 
     Rede *redeSimulada = new Rede(6);
 
@@ -56,10 +59,8 @@ int main(){
     r6 -> mapear(5, r5, 2);
     r6 -> setPadrao(r4, 1);
 
-    Agendador *agendador = new Agendador(1, redeSimulada, tamanho);
+    Agendador *agendador = new Agendador(instanteInicial, redeSimulada, tamanho);
 
-    menu0:
-    int simulacoes = 0;
     menu1:
     cout << "Simulador de Rede" << endl;
     cout << "1) Enviar um datagrama" << endl;
@@ -89,54 +90,28 @@ int main(){
                 cin >> msg;
 
                 Datagrama *datagrama = new Datagrama(enderecoOrigem, enderecoDestino, msg);
-
-                /*
+                
                 if (enderecoOrigem == 1){
-                    r1 -> receber(datagrama);  
-                }
-
-                if (enderecoOrigem == 2){
-                    r2 -> receber(datagrama);
-                }
-
-                if (enderecoOrigem == 3){
-                    r3 -> receber(datagrama);
-                }
-
-                if (enderecoOrigem == 4){
-                    r4 -> receber(datagrama);
-                }
-
-                if (enderecoOrigem == 5){
-                    r5 -> receber(datagrama);
-                }  
-
-                if (enderecoOrigem == 6){
-                    r6 -> receber(datagrama);
-                }                
-                */
-               
-                if (enderecoDestino == 1){
                 agendador -> agendar(instante, r1, datagrama); 
                 }
 
-                if (enderecoDestino == 2){
+                if (enderecoOrigem == 2){
                 agendador -> agendar(instante, r2, datagrama); 
                 }
 
-                if (enderecoDestino == 3){
+                if (enderecoOrigem == 3){
                 agendador -> agendar(instante, r3, datagrama); 
                 }
 
-                if (enderecoDestino == 4){
+                if (enderecoOrigem == 4){
                 agendador -> agendar(instante, r4, datagrama); 
                 }
 
-                if (enderecoDestino == 5){
+                if (enderecoOrigem == 5){
                 agendador -> agendar(instante, r5, datagrama); 
                 }
 
-                if (enderecoDestino == 6){
+                if (enderecoOrigem == 6){
                 agendador -> agendar(instante, r6, datagrama); 
                 }
 
@@ -164,11 +139,14 @@ int main(){
         cin >> tempo;
         cout << endl;
         for (int k = 1; k <= tempo; k++){
-            cout << "Instante " << k << endl;
+            instanteMostrado += 1;
+            cout << "Instante " << instanteMostrado << endl;
             cout << "---" << endl;
             agendador -> processar();
             cout << endl;
         }
-        goto menu0;
+        goto menu1;
     }
 }
+
+

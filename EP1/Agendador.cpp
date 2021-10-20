@@ -35,18 +35,13 @@ void Agendador::processar(){
     int i = 0;
 
     while (i < quantidadeDeEventos){
-        reverifica:
+        int reverifica = 0;
         if (eventosAgendados[i] != NULL){
             if ((eventosAgendados[i] -> getInstante()) == instanteInicialSimulacao){
                 
-                //enderecoRoteadorDeOrigem = eventosAgendados[i] -> getDestino();
-                //roteadorDeOrigem = roteadores[enderecoRoteadorDeOrigem-1];
-                roteadorDeOrigem = eventosAgendados[i] -> getDestino();
-                roteadorDeOrigem -> imprimir();
+                roteadorAPassar = eventosAgendados[i] -> getDestino();
                 datagramaAPassar = eventosAgendados[i] -> getDatagrama();
-                roteadorDeOrigem -> receber(datagramaAPassar);
-                //roteadorAPassar = eventosAgendados[i] -> getDestino();
-                //roteadorAPassar -> receber(datagramaAPassar);
+                roteadorAPassar -> receber(datagramaAPassar);
 
                 for(int k = i; k < quantidadeDeEventos-1; k++){
                     eventosAgendados[k] = eventosAgendados[k+1];
@@ -54,15 +49,17 @@ void Agendador::processar(){
 
                 eventosAgendados[quantidadeDeEventos-1] = NULL;
                 quantidadeDeEventos -= 1;
-                goto reverifica;
+                reverifica = 1;
             }
         }
-        i = i + 1;
+        if (reverifica == 0){
+            i = i + 1;
+        }
     }
 
     for (int j = 0; j < quantidadeRoteadoresRede; j++){
         novoEvento = roteadores[j] -> processar(instanteInicialSimulacao);
-            if (novoEvento != NULL){
+            if (novoEvento != NULL && quantidadeDeEventos < quantidadeMaxEventosAgendador){
                 eventosAgendados[quantidadeDeEventos++] = novoEvento;
             }
     }

@@ -20,9 +20,7 @@ private:
     Datagrama* datagramaAPassar;
     int quantidadeRoteadoresRede;
     Evento* novoEvento;
-    int enderecoRoteadorDeOrigem;
-    //Roteador* roteadorAPassar;
-    Roteador* roteadorDeOrigem;
+    Roteador* roteadorAPassar;
 
 public:
     Agendador(int instanteInicial, Rede* rede, int tamanho);
