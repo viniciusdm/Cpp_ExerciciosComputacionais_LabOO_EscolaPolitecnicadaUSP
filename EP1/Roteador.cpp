@@ -75,3 +75,4 @@ Evento* Roteador::processar(int instante){
 void Roteador::imprimir(){
     cout << "Roteador com endereço: " << enderecoDoRoteador << " com evento no instante: " << instanteComAtraso << endl;
 }
+
