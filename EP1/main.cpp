@@ -70,13 +70,13 @@ int main(){
     cin >> opcao;
     cout << endl;
 
-    if (opcao == 0){
-        return 0;
-    }
+    switch(opcao){
 
-    if (opcao == 1){
+    case 0:
+        return 0;
+
+    case 1:
         if (simulacoes < tamanho){
-        
             cout << "Endereço do roteador de origem: ";
             cin >> enderecoOrigem;
 
@@ -132,9 +132,8 @@ int main(){
             cout << endl;
             goto menu1;
         }
-    }
 
-    if (opcao == 2){
+    case 2:
         cout << "Quantidade de tempo: ";
         cin >> tempo;
         cout << endl;
