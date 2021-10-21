@@ -141,7 +141,6 @@ int main(){
             instanteMostrado += 1;
             simulacoes -= 1;
             cout << "Instante " << instanteMostrado << endl;
-            cout << agendador->getInstante() << endl;
             cout << "---" << endl;
             agendador -> processar();
             cout << endl;
