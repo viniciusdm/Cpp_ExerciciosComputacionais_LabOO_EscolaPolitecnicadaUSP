@@ -5,7 +5,7 @@
 using namespace std;
 
 Agendador::Agendador(int instanteInicial, Rede* rede, int tamanho){
-    instanteInicialSimulacao = instanteInicial;
+    instanteSimulacao = instanteInicial;
     redeSimulada = rede;
     quantidadeMaxEventosAgendador = tamanho;
     eventosAgendados = new Evento*[tamanho];
@@ -35,7 +35,7 @@ void Agendador::processar(){
     while (i < quantidadeDeEventos){
         int reverifica = 0;
         if (eventosAgendados[i] != NULL){
-            if ((eventosAgendados[i] -> getInstante()) == instanteInicialSimulacao){
+            if ((eventosAgendados[i] -> getInstante()) == instanteSimulacao){
                 
                 roteadorAPassar = eventosAgendados[i] -> getDestino();
                 datagramaAPassar = eventosAgendados[i] -> getDatagrama();
@@ -56,14 +56,14 @@ void Agendador::processar(){
     }
 
     for (int j = 0; j < quantidadeRoteadoresRede; j++){
-        novoEvento = roteadores[j] -> processar(instanteInicialSimulacao);
+        novoEvento = roteadores[j] -> processar(instanteSimulacao);
             if (novoEvento != NULL && quantidadeDeEventos < quantidadeMaxEventosAgendador){
                 eventosAgendados[quantidadeDeEventos++] = novoEvento;
             }
     }
-    instanteInicialSimulacao += 1;   
+    instanteSimulacao += 1;   
 }
 
 int Agendador::getInstante(){
-    return instanteInicialSimulacao;
+    return instanteSimulacao;
 }

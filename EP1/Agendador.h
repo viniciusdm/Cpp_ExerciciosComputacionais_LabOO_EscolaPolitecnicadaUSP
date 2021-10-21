@@ -11,7 +11,7 @@ using namespace std;
 
 class Agendador {
 private:
-    int instanteInicialSimulacao;
+    int instanteSimulacao;
     Rede* redeSimulada;
     int quantidadeMaxEventosAgendador;
     Evento** eventosAgendados;

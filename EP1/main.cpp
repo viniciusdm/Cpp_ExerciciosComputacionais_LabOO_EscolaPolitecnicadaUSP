@@ -12,16 +12,14 @@ using namespace std;
 
 int main(){
 
-    int opcao;
+    int opcaoDeMenu;
     int tempo;
     int enderecoOrigem;
     int instante;
     int enderecoDestino;
     string msg;
     int tamanho = 10;
-    int simulacoes = 0;
     int instanteInicial = 1;
-    int instanteMostrado = 0;
 
     Rede *redeSimulada = new Rede(6);
 
@@ -67,16 +65,16 @@ int main(){
     cout << "2) Passar tempo" << endl;
     cout << "0) Sair" << endl;
     cout << "Escolha uma opção: ";
-    cin >> opcao;
+    cin >> opcaoDeMenu;
     cout << endl;
 
-    switch(opcao){
+    switch(opcaoDeMenu){
 
     case 0:
         return 0;
 
     case 1:
-        if (simulacoes < tamanho){
+        if (agendador->getQuantidade() < tamanho){
             cout << "Endereço do roteador de origem: ";
             cin >> enderecoOrigem;
 
@@ -138,9 +136,7 @@ int main(){
         cin >> tempo;
         cout << endl;
         for (int k = 0; k < tempo; k++){
-            instanteMostrado += 1;
-            simulacoes -= 1;
-            cout << "Instante " << instanteMostrado << endl;
+            cout << "Instante " << agendador -> getInstante() << endl;
             cout << "---" << endl;
             agendador -> processar();
             cout << endl;
