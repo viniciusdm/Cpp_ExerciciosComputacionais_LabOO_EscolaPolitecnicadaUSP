@@ -14,7 +14,7 @@ TabelaDeRepasse::TabelaDeRepasse(int tamanho){
 
 TabelaDeRepasse::~TabelaDeRepasse(){
     delete[] enderecosDaTabela;
-    delete[] enderecosDaTabela;
+    delete[] atrasosDaTabela;
     delete[] roteadoresDaTabela;
 }
 
