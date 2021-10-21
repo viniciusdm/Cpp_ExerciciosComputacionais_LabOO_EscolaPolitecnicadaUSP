@@ -137,9 +137,11 @@ int main(){
         cout << "Quantidade de tempo: ";
         cin >> tempo;
         cout << endl;
-        for (int k = 1; k <= tempo; k++){
+        for (int k = 0; k < tempo; k++){
             instanteMostrado += 1;
+            simulacoes -= 1;
             cout << "Instante " << instanteMostrado << endl;
+            cout << agendador->getInstante() << endl;
             cout << "---" << endl;
             agendador -> processar();
             cout << endl;
