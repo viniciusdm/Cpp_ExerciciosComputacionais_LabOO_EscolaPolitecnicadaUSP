@@ -13,13 +13,14 @@ using namespace std;
 int main(){
 
     int opcaoDeMenu;
-    int tempo;
+    
     int enderecoOrigem;
-    int instante;
     int enderecoDestino;
+    int instante;
     string msg;
-    int tamanho = 10;
+    int maxEventosAgendador = 10;
     int instanteInicial = 1;
+    int tempo;
 
     Rede *redeSimulada = new Rede(6);
 
@@ -57,7 +58,7 @@ int main(){
     r6 -> mapear(5, r5, 2);
     r6 -> setPadrao(r4, 1);
 
-    Agendador *agendador = new Agendador(instanteInicial, redeSimulada, tamanho);
+    Agendador *agendador = new Agendador(instanteInicial, redeSimulada, maxEventosAgendador);
 
     menu1:
     cout << "Simulador de Rede" << endl;
@@ -74,59 +75,80 @@ int main(){
         return 0;
 
     case 1:
-        if (agendador->getQuantidade() < tamanho){
-            cout << "Endereço do roteador de origem: ";
-            cin >> enderecoOrigem;
+        cout << "Endereço do roteador de origem: ";
+        cin >> enderecoOrigem;
 
-            if (enderecoOrigem == 1 || enderecoOrigem == 2 || enderecoOrigem == 3 || enderecoOrigem == 4 || enderecoOrigem == 5 || enderecoOrigem == 6){
+        if (enderecoOrigem == 1 || enderecoOrigem == 2 || enderecoOrigem == 3 || enderecoOrigem == 4 || enderecoOrigem == 5 || enderecoOrigem == 6){
 
-                cout << "Instante: ";
-                cin >> instante;
-                cout << "Endereço de destino: ";
-                cin >> enderecoDestino;
-                cout << "Mensagem: ";
-                cin >> msg;
+            cout << "Instante: ";
+            cin >> instante;
+            cout << "Endereço de destino: ";
+            cin >> enderecoDestino;
+            cout << "Mensagem: ";
+            cin >> msg;
 
-                Datagrama *datagrama = new Datagrama(enderecoOrigem, enderecoDestino, msg);
-                
-                if (enderecoOrigem == 1){
-                agendador -> agendar(instante, r1, datagrama); 
-                }
-
-                if (enderecoOrigem == 2){
-                agendador -> agendar(instante, r2, datagrama); 
-                }
-
-                if (enderecoOrigem == 3){
-                agendador -> agendar(instante, r3, datagrama); 
-                }
-
-                if (enderecoOrigem == 4){
-                agendador -> agendar(instante, r4, datagrama); 
-                }
-
-                if (enderecoOrigem == 5){
-                agendador -> agendar(instante, r5, datagrama); 
-                }
-
-                if (enderecoOrigem == 6){
-                agendador -> agendar(instante, r6, datagrama); 
-                }
-
-                simulacoes += 1;
-                cout << endl;
-                goto menu1;
+            Datagrama *datagrama = new Datagrama(enderecoOrigem, enderecoDestino, msg);
+            
+            if (enderecoOrigem == 1){
+                if (agendador -> agendar(instante, r1, datagrama) == false){ 
+                    cout << endl;
+                    cout << "Erro: Sem espaco para agendar o evento" << endl;
+                    cout << endl;
+                    goto menu1;
+                } 
             }
-            else {
-                cout << endl;
-                cout << "Erro: Origem desconhecida" << endl;
-                cout << endl;
-                goto menu1;
+
+            if (enderecoOrigem == 2){
+                if (agendador -> agendar(instante, r2, datagrama) == false){ 
+                    cout << endl;
+                    cout << "Erro: Sem espaco para agendar o evento" << endl;
+                    cout << endl;
+                    goto menu1;
+                } 
             }
+
+            if (enderecoOrigem == 3){
+                if (agendador -> agendar(instante, r3, datagrama) == false){ 
+                    cout << endl;
+                    cout << "Erro: Sem espaco para agendar o evento" << endl;
+                    cout << endl;
+                    goto menu1;
+                } 
+            }
+
+            if (enderecoOrigem == 4){
+                if (agendador -> agendar(instante, r4, datagrama) == false){ 
+                    cout << endl;
+                    cout << "Erro: Sem espaco para agendar o evento" << endl;
+                    cout << endl;
+                    goto menu1;
+                } 
+            }
+
+            if (enderecoOrigem == 5){
+                if (agendador -> agendar(instante, r5, datagrama) == false){ 
+                    cout << endl;
+                    cout << "Erro: Sem espaco para agendar o evento" << endl;
+                    cout << endl;
+                    goto menu1;
+                } 
+            }
+
+            if (enderecoOrigem == 6){
+                if (agendador -> agendar(instante, r6, datagrama) == false){ 
+                    cout << endl;
+                    cout << "Erro: Sem espaco para agendar o evento" << endl;
+                    cout << endl;
+                    goto menu1;
+                } 
+            }
+
+            cout << endl;
+            goto menu1;
         }
         else {
             cout << endl;
-            cout << "Erro: Sem espaco para agendar o evento" << endl;
+            cout << "Erro: Origem desconhecida" << endl;
             cout << endl;
             goto menu1;
         }
